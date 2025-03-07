@@ -89,7 +89,9 @@ export const Connecting = props => {
 
     const statusChanged =
       pollingState.previousResponse?.connection_status !==
-      pollingState.currentResponse?.connection_status
+      pollingState.currentResponse?.connection_status || 
+      pollingState.previousResponse?.raw_status !==
+      pollingState.currentResponse?.raw_status
 
     // if status changes during connecting or timeout send out a post message
     if (pollingState.previousResponse != null && statusChanged) {
